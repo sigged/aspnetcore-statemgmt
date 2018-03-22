@@ -1,0 +1,19 @@
+﻿@model CoreCourse.StateMgmt.Web.Models.ElmoStatusVm
+@{
+    ViewData["Title"] = "Client State";
+}
+<h2>Client State</h2>
+
+<section>
+    <header><h3>Elmo's perilous hike - End</h3></header>
+    <p>Elmo's inventory:</p>
+    <div>
+        <ul>
+            @foreach (var item in Model.Inventory)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+    <p><big>After a long hike,<br />@Model.Status</big></p>
+</section>

@@ -1,0 +1,36 @@
+﻿@model CoreCourse.StateMgmt.Web.Models.ElmoStatusVm
+@{
+    ViewData["Title"] = "Client State - Querystring";
+
+    string inventoryParms = "";
+    if (Model.Inventory != null)
+    {
+        for (int i = 0; i < Model.Inventory.Length; i++)
+        {
+            if (i != 0) { inventoryParms += "&"; }
+            inventoryParms += $"inventory={Model.Inventory[i]}";
+        }
+    }
+}
+<h2>Client State</h2>
+
+<section>
+    <header><h3>Elmo's perilous hike - Querystring</h3></header>
+    <p>Elmo's inventory:</p>
+    <div>
+        <ul>
+            @foreach (var item in Model.Inventory)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+    <p>Now he's ready for the road! Pick your destination carefully:</p>
+    <div>
+        <ul>
+            <li><a href="@Url.Action("FreezingMountains")?@inventoryParms">Travel to the <b>Freezing Mountains</b></a></li>
+            <li><a href="@Url.Action("ScorchingDesert")?@inventoryParms">Travel to the <b>Scorching Desert</b></a></li>
+            <li><a href="@Url.Action("Index")">Stay at home</a></li>
+        </ul>
+    </div>
+</section>

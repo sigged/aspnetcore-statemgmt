@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Simple States";
+}
+
+<h2>Simple States</h2>
+
+<section>
+    <header><h3>Elmo's perilous hike - Querystring</h3></header>
+    <div>
+        <p>Elmo goes one a hike. Before he leaves, he must decide what items to bring.</p>
+        <p>Pick two items to bring:</p>
+        <div>
+            <ul>
+                <li><a href="@Url.Action("PickDestinationQuery")?inventory=backpack&inventory=coat">Bring a <b>backpack</b> and a <b>coat</b></a></li>
+                <li><a href="@Url.Action("PickDestinationQuery")?inventory=backpack&inventory=parasol">Bring a <b>backpack</b> and a <b>parasol</b></a></li>
+                <li><a href="@Url.Action("PickDestinationQuery")?inventory=coat&inventory=hat">Bring a <b>coat</b> and a <b>hat</b></a></li>
+                <li><a href="@Url.Action("PickDestinationQuery")?inventory=coat&inventory=parasol">Bring a <b>coat</b> and a <b>parasol</b></a></li>
+                <li><a href="@Url.Action("PickDestinationQuery")?inventory=hat&inventory=parasol">Bring a <b>hat</b> and a <b>parasol</b></a></li>
+                <li><a href="@Url.Action("PickDestinationQuery")">Don't bring anything</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <header><h3>Elmo's perilous hike - Hidden Fields</h3></header>
+    <article>
+        <p>Elmo goes one a hike. Before he leaves, he must decide what items to bring.</p>
+        <p>Pick two items to bring:</p>
+        <div>
+            <form asp-action="PickDestinationPost">
+                <input type="hidden" name="inventory" value="backpack" />
+                <input type="hidden" name="inventory" value="coat" />
+                <button type="submit">Bring a <b>backpack</b> and a <b>coat</b></button>
+            </form>
+            <form asp-action="PickDestinationPost">
+                <input type="hidden" name="inventory" value="backpack" />
+                <input type="hidden" name="inventory" value="parasol" />
+                <button type="submit">Bring a <b>backpack</b> and a <b>parasol</b></button>
+            </form>
+            <form asp-action="PickDestinationPost">
+                <input type="hidden" name="inventory" value="coat" />
+                <input type="hidden" name="inventory" value="hat" />
+                <button type="submit">Bring a <b>coat</b> and a <b>hat</b></button>
+            </form>
+            <form asp-action="PickDestinationPost">
+                <input type="hidden" name="inventory" value="coat" />
+                <input type="hidden" name="inventory" value="parasol" />
+                <button type="submit">Bring a <b>coat</b> and a <b>parasol</b></button>
+            </form>
+            <form asp-action="PickDestinationPost">
+                <input type="hidden" name="inventory" value="backpack" />
+                <input type="hidden" name="inventory" value="parasol" />
+                <button type="submit">Bring a <b>hat</b> and a <b>parasol</b></button>
+            </form>
+            <form asp-action="PickDestinationPost">
+                <button type="submit">Don't bring anything</button>
+            </form>
+        </div>
+    </article>
+</section>
