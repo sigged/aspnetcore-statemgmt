@@ -21,7 +21,7 @@
                 <div class="clearfix">
                     @for (int i = 0; i < Model.Biscuits.Count; i++)
                     {
-                        <div class="cookiebutton">
+                        <div class="radioimagebutton">
                             <label asp-for="@(Model.Biscuits[i].ImageName)">
                                 <img src="~/images/cookies/@(Model.Biscuits[i].ImageName).png" alt="@(Model.Biscuits[i].Name)" /><br />
                                 <input type="radio" asp-for="SelectedBiscuitImage" id="@Html.IdFor(e => e.Biscuits[i].ImageName)" value="@Model.Biscuits[i].ImageName" />&nbsp;@Model.Biscuits[i].Name
@@ -29,7 +29,7 @@
                         </div>
                     }
                 </div>
-                <div class="cookiesavebutton">
+                <div class="savebutton">
                     <p><input type="checkbox" asp-for="IsPersistent" />&nbsp;<label asp-for="IsPersistent">Persistent Cookie!</label></p>
                     <p><button type="submit" class="btn btn-lg btn-success">Save cookie</button></p>
                 </div>

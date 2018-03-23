@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,17 @@ namespace CoreCourse.StateMgmt.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
+
+            // Add Session service to the application
+            services.AddSession(options =>
+            {
+                options.Cookie.SameSite = SameSiteMode.Strict; //protect session id from being hijacked
+                options.Cookie.HttpOnly = true;
+                options.IdleTimeout = TimeSpan.FromSeconds(15); // Set a short timeout for easy testing.
+            });
+
             services.AddMvc();
         }
 
@@ -36,6 +48,9 @@ namespace CoreCourse.StateMgmt.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            //enable session for the application
+            app.UseSession();
 
             app.UseStaticFiles();
 

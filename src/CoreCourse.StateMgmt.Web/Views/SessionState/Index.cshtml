@@ -1,13 +1,55 @@
-﻿
+﻿@model CoreCourse.StateMgmt.Web.Models.SessionState.IndexVm
 @{
     ViewData["Title"] = "Session State";
 }
 
 <h2>Session State</h2>
 
+<p>
+    This small shopping cart example saves Belgian beers to your list.
+</p>
+
 <section>
-    <header><h3>Whoops... Nothing here yet!</h3></header>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <form class="pull-right" style="margin-top:-5px;" asp-action="ClearCart">
+                <button type="submit" class="btn btn-sm btn-danger">Clear Shopping Cart</button>
+            </form>
+            <header>Your shopping cart </header>
+        </div>
+        <div class="panel-body">
+            @foreach (var beer in Model.ShoppingCart)
+            {
+                <img src="~/images/beers/@(beer.ImageName).png" alt="@beer.Name" title="@beer.Name" style="max-height:100px;" />
+            }
+        </div>
+    </div>
+</section>
+
+<section>
+    <header><h3>Pick a belgian beer.</h3></header>
     <div>
-        <p>Looks like I didn't have time to do this one yet. Check back later!</p>
+        <p>We'll keep put it in your shopping bag!</p>
+        <p>
+            Clicking <b>Add Beer</b> will serialize the beer and save it in Session State. The session state will be lost when you close your browser.
+        </p>
+        <div>
+            <form asp-action="AddBeer">
+                <div class="clearfix">
+                    @for (int i = 0; i < Model.Beers.Count; i++)
+                    {
+                        <div class="radioimagebutton">
+                            <label asp-for="@(Model.Beers[i].Name)">
+                                <img src="~/images/beers/@(Model.Beers[i].ImageName).png" alt="@(Model.Beers[i].Name)" /><br />
+                                <input type="radio" asp-for="SelectedBeerName" id="@Html.IdFor(e => e.Beers[i].Name)" value="@Model.Beers[i].Name" />&nbsp;@Model.Beers[i].Name
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="savebutton">
+                    <p><button type="submit" class="btn btn-lg btn-success">Add Beer</button></p>
+                </div>
+            </form>
+        </div>
     </div>
 </section>

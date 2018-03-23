@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\cookies\" />
+    <Folder Include="wwwroot\images\beers\" />
   </ItemGroup>
 
   <ItemGroup>
