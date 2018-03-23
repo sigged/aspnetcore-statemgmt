@@ -1,13 +1,18 @@
 ﻿
 @{
-    ViewData["Title"] = "Cache Example";
+    ViewData["Title"] = "Cache Example - mmm... PI!";
 }
-
+<div class="pull-right">
+    <img src="~/images/cache/mmm-pi.jpg" width="200" alt="mmm...PI" />
+</div>
 <h2>Cache Example</h2>
-
+<p>
+    This example calculates a large number of PI's decimals.
+</p>
 <section>
-    <header><h3>Whoops... Nothing here yet!</h3></header>
-    <div>
-        <p>Looks like I didn't have time to do this one yet. Check back later!</p>
+    <header><h3>Decimals of PI</h3></header>
+    
+    <div class="clearfix">
+        <a asp-action="ViewPi" class="btn btn-primary">Click here to View PI</a>
     </div>
 </section>

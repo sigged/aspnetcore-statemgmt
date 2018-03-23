@@ -22,8 +22,11 @@ namespace CoreCourse.StateMgmt.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Adds a default in-memory implementation of IDistributedCache.
-            services.AddDistributedMemoryCache();
+            //// Adds a default in-memory implementation of IDistributedCache.
+            //services.AddDistributedMemoryCache();
+
+            // Add a default in-memory implementation of a Cache
+            services.AddMemoryCache();
 
             // Add Session service to the application
             services.AddSession(options =>

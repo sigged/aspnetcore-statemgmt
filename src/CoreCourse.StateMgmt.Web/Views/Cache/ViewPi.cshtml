@@ -1,0 +1,29 @@
+﻿@model CoreCourse.StateMgmt.Web.Models.Cache.ViewPiVm
+@{
+    ViewData["Title"] = "Cache Example - mmm... PI!";
+}
+
+<div class="pull-right">
+    <img src="~/images/cache/mmm-pi.jpg" width="200" alt="mmm...PI" />
+</div>
+<h2>Cache Example</h2>
+<p>
+    This example calculates a large number of PI's decimals.
+</p>
+<section>
+    <header><h3>Decimals of PI</h3></header>
+    <div class="well well-lg" style="word-break:break-all;">
+        @($"3.{Model.Result.PiDecimals.Select(i => i.ToString("D9")).Aggregate((cur, next) => { return cur + next; })}")
+    </div>
+    <p>Displaying <b>@Model.Result.Digits</b> decimals, calculated @@ <b>@Model.Result.CacheTime.ToString("HH:mm:ss")</b></p>
+    <p>Retrieved this data in <b>@Model.ElapsedTime.TotalSeconds.ToString("N7")</b> seconds</p>
+    <p id="counter"><big>Cache expires in <b>@Model.CacheDuration</b> seconds</big></p>
+    <div>
+        <a asp-action="Index" class="btn btn-primary">&laquo; Back</a>
+    </div>
+    <input asp-for="@Model.CacheDuration" type="hidden" />
+</section>
+
+@section Scripts{
+    <script src="~/js/countdown.js"></script>
+}
