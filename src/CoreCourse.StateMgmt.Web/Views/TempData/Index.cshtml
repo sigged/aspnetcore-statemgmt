@@ -1,13 +1,69 @@
-﻿
+﻿@model CoreCourse.StateMgmt.Web.Models.TempData.IndexVm
 @{
     ViewData["Title"] = "TempData Example";
+
+    //read Message from TempData
+    string message = TempData["MessageToEcho"] as string;
+
+    //Message is now marked for deletion, do we want that?
+    if (Model.KeepUntilRemoved)
+    {
+        //unmark message for deletion.
+        TempData.Keep("MessageToEcho");
+    }
 }
 
 <h2>TempData Example</h2>
+<p>
+    This View will echo your message when you click Echo. There's an option to keep the TempData key so it'll survive multple requests.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <b>Try the following:</b>
+        <ul>
+            <li>Enter a message and click <b>Echo</b></li>
+            <li>Refresh the browser</li>
+            <li>The message is displayed</li>
+            <li>Refresh the browser again</li>
+            <li>The message is gone</li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <b>Also try:</b>
+        <ul>
+            <li>Enter a message, check <b>Keep Until Removed</b> and click <b>Echo</b></li>
+            <li>Refresh the browser</li>
+            <li>The message is displayed</li>
+            <li>Refresh the browser again</li>
+            <li>The message is still there, until you remove the <b>Keep</b> parameter from the querystring.</li>
+        </ul>
+    </div>
+</div>
+
+
+@if (TempData.ContainsKey("MessageToEcho"))
+{
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Echo Message</div>
+            <div class="panel-body">
+                @Html.Raw(message)
+            </div>
+        </div>
+    </section>
+}
 
 <section>
-    <header><h3>Whoops... Nothing here yet!</h3></header>
-    <div>
-        <p>Looks like I didn't have time to do this one yet. Check back later!</p>
-    </div>
+    <header><h3>Echo a string with TempData</h3></header>
+    <form asp-action="Index">
+        <div class="form-group">
+            <label asp-for="MessageToEcho"></label>
+            <textarea asp-for="MessageToEcho" class="form-control"></textarea>
+            <span asp-validation-for="MessageToEcho" class="text-danger"></span>
+        </div>
+        <div>
+            <p><input type="checkbox" asp-for="KeepUntilRemoved" />&nbsp;<label asp-for="KeepUntilRemoved"></label></p>
+            <p><button type="submit" class="btn btn-lg btn-success">Echo!</button></p>
+        </div>
+    </form>
 </section>
