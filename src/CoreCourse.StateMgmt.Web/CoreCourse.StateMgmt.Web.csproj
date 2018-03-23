@@ -17,4 +17,10 @@
     <Folder Include="wwwroot\images\cookies\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\SessionState\Index.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

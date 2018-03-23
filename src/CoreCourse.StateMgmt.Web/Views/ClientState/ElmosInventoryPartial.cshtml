@@ -1,0 +1,12 @@
+﻿@model CoreCourse.StateMgmt.Web.Models.ClientState.ElmoStatusVm
+<div class="panel panel-primary">
+    <div class="panel-heading">Elmo's inventory</div>
+    <div class="panel-body">
+        <ul>
+            @foreach (var item in Model.Inventory)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+</div>

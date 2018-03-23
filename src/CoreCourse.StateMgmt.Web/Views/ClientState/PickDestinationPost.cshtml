@@ -7,30 +7,23 @@
 
 <section>
     <header><h3>Elmo's perilous hike - Hidden Fields</h3></header>
-    <p>Elmo's inventory:</p>
-    <div>
-        <ul>
-            @foreach (var item in Model.Inventory)
-            {
-                <li>@item</li>
-            }
-        </ul>
-    </div>
-    <p>Now he's ready for the road! Pick your destination carefully:</p>
+    @await Html.PartialAsync("ElmosInventoryPartial")
+    <h4>Now he's ready for the road! Pick your destination carefully:</h4>
     <div>
         <form asp-action="FreezingMountains">
             @foreach (var item in Model.Inventory)
             {
-                <input type="hidden" name="inventory" value="@item" />
+                <input type="hidden" name="inventory" value="@item"/>
             }
-            <button type="submit">Travel to the <b>Freezing Mountains</b></button>
+            <button class="btn btn-warning" style="margin:2px 0" type="submit">Travel to the <b>Freezing Mountains</b></button>
         </form>
         <form asp-action="ScorchingDesert">
             @foreach (var item in Model.Inventory)
             {
                 <input type="hidden" name="inventory" value="@item" />
             }
-            <button type="submit">Travel to the <b>Scorching Desert</b></button>
+            <button class="btn btn-warning" style="margin:2px 0" type="submit">Travel to the <b>Scorching Desert</b></button>
         </form>
+        <a class="btn btn-success" style="margin:2px 0" asp-action="Index">Stay at home</a>
     </div>
 </section>

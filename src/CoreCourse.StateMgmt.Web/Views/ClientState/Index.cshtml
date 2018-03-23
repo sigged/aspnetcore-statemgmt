@@ -3,8 +3,11 @@
     ViewData["Title"] = "Simple States";
 }
 
-<h2>Simple States</h2>
-
+<h2>Client State</h2>
+<p>
+This mini-game shows how both the querystring and form fields may be used to persist data across requests.<br />
+Elmo's inventory items will be persisted until he reaches a destination.
+</p>
 <section>
     <header><h3>Elmo's perilous hike - Querystring</h3></header>
     <div>
@@ -32,30 +35,30 @@
             <form asp-action="PickDestinationPost">
                 <input type="hidden" name="inventory" value="backpack" />
                 <input type="hidden" name="inventory" value="coat" />
-                <button type="submit">Bring a <b>backpack</b> and a <b>coat</b></button>
+                <button class="btn btn-primary" style="margin:2px 0" type="submit">Bring a <b>backpack</b> and a <b>coat</b></button>
             </form>
             <form asp-action="PickDestinationPost">
                 <input type="hidden" name="inventory" value="backpack" />
                 <input type="hidden" name="inventory" value="parasol" />
-                <button type="submit">Bring a <b>backpack</b> and a <b>parasol</b></button>
+                <button class="btn btn-primary" style="margin:2px 0" type="submit">Bring a <b>backpack</b> and a <b>parasol</b></button>
             </form>
             <form asp-action="PickDestinationPost">
                 <input type="hidden" name="inventory" value="coat" />
                 <input type="hidden" name="inventory" value="hat" />
-                <button type="submit">Bring a <b>coat</b> and a <b>hat</b></button>
+                <button class="btn btn-primary" style="margin:2px 0" type="submit">Bring a <b>coat</b> and a <b>hat</b></button>
             </form>
             <form asp-action="PickDestinationPost">
                 <input type="hidden" name="inventory" value="coat" />
                 <input type="hidden" name="inventory" value="parasol" />
-                <button type="submit">Bring a <b>coat</b> and a <b>parasol</b></button>
+                <button class="btn btn-primary" style="margin:2px 0" type="submit">Bring a <b>coat</b> and a <b>parasol</b></button>
             </form>
             <form asp-action="PickDestinationPost">
                 <input type="hidden" name="inventory" value="backpack" />
                 <input type="hidden" name="inventory" value="parasol" />
-                <button type="submit">Bring a <b>hat</b> and a <b>parasol</b></button>
+                <button class="btn btn-primary" style="margin:2px 0" type="submit">Bring a <b>hat</b> and a <b>parasol</b></button>
             </form>
             <form asp-action="PickDestinationPost">
-                <button type="submit">Don't bring anything</button>
+                <button class="btn btn-warning" style="margin:2px 0" type="submit">Don't bring anything</button>
             </form>
         </div>
     </article>
