@@ -1,4 +1,4 @@
-﻿using CoreCourse.StateMgmt.Web.Models;
+﻿using CoreCourse.StateMgmt.Web.Models.ClientState;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

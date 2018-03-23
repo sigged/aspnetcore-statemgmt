@@ -1,0 +1,39 @@
+﻿@model CoreCourse.StateMgmt.Web.Models.Cookies.IndexVm
+@{
+    ViewData["Title"] = "Cookies";
+}
+
+<h2>Cookies</h2>
+
+<section>
+    <header><h3>Pick your favorite cookie.</h3></header>
+    <div>
+        <p>And we'll save it ... in a cookie!</p>
+        <p>
+            Clicking <b>Save Cookie</b> will save your choice in a HTTP cookie, stored in your browser.<br />
+            <ul>
+                <li>The cookie will be deleted when you close your browser</li>
+                <li>If you choose <b>Persistent Cookie</b>, the HTTP cookie will not be deleted when you close this website.</li>
+            </ul>
+        </p>
+        <div>
+            <form asp-action="SaveCookie">
+                <div class="clearfix">
+                    @for (int i = 0; i < Model.Biscuits.Count; i++)
+                    {
+                        <div class="cookiebutton">
+                            <label asp-for="@(Model.Biscuits[i].ImageName)">
+                                <img src="~/images/cookies/@(Model.Biscuits[i].ImageName).png" alt="@(Model.Biscuits[i].Name)" /><br />
+                                <input type="radio" asp-for="SelectedBiscuitImage" id="@Html.IdFor(e => e.Biscuits[i].ImageName)" value="@Model.Biscuits[i].ImageName" />&nbsp;@Model.Biscuits[i].Name
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="cookiesavebutton">
+                    <p><input type="checkbox" asp-for="IsPersistent" />&nbsp;<label asp-for="IsPersistent">Persistent Cookie!</label></p>
+                    <p><button type="submit" class="btn btn-lg btn-success">Save cookie</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

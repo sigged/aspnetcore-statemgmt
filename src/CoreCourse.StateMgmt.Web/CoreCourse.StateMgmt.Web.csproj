@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ClientState\" />
+    <Folder Include="wwwroot\images\cookies\" />
   </ItemGroup>
 
 </Project>
