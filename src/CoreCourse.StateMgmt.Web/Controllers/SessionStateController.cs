@@ -37,21 +37,26 @@ namespace CoreCourse.StateMgmt.Web.Controllers
         [HttpPost]
         public IActionResult AddBeer(IndexVm model)
         {
+            //get the selected beer from form
             BeerVm selectedBeer = AllBeers.FirstOrDefault(b => b.Name == model.SelectedBeerName);
             if(selectedBeer == null)
             {
                 return RedirectToAction("Index");
             }
 
+            //retrieve serialized collection from session
             string serializedBeers = HttpContext.Session.GetString(STATEKEY);
             List<BeerVm> beersInShoppingList = new List<BeerVm>();
             if(serializedBeers != null)
             {
+                //deserialize JSON string to it's original form
                 beersInShoppingList = JsonConvert.DeserializeObject<List<BeerVm>>(serializedBeers);
             }
+            //add beer to the List
             beersInShoppingList.Add(selectedBeer);
+            //seriaize List to JSON string
             serializedBeers = JsonConvert.SerializeObject(beersInShoppingList);
-
+            //store JSON string in Session State
             HttpContext.Session.SetString(STATEKEY, serializedBeers);
 
             return RedirectToAction("Index");
